@@ -66,29 +66,27 @@ const Input = styled.input`
         }
       `;
   }
-}
-`;
+}`;
+
 function FormField({
   label, type, name, value, onChange,
 }) {
-  const fieldId = `id_${name}`;
-  const isTextarea = type === 'textarea'
-  const tag = isTextarea ? 'textarea' : 'input';
+  const isTypeTextArea = type === 'textarea';
+  const tag = isTypeTextArea ? 'textarea' : 'input';
 
   return (
     <FormFieldWrapper>
-      <Label
-        htmlFor={fieldId}
-      >
-        {label}
+      <Label>
         <Input
           as={tag}
-          id={fieldId}
           type={type}
-          name={name}
           value={value}
+          name={name}
           onChange={onChange}
         />
+        <Label.Text>
+          {label}
+        </Label.Text>
       </Label>
     </FormFieldWrapper>
   );
