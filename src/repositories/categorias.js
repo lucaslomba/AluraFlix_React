@@ -4,15 +4,17 @@ const URL_CATEGORIES = `${config.URL_BACKEND_TOP}/categorias?_embed=videos`
 
 function getAllWithVideos(){
     return fetch(`${URL_CATEGORIES}?_embed=videos`)
-    .then(async (respostaDoServer) => {
+    .then(async (response) => {
 
-        if(respostaDoServer.ok){
-            const resposta = await respostaDoServer.json();
-            return resposta
+        if(response.ok){
+            const resposta = await response.json();
+
+            return resposta;     
         }
 
-        throw new Error('Não foi possivel pegar os dados');
-    })
+        throw new Error('Não foi possivel retornar os dados');
+        
+    });
 }
 
 export default{
